@@ -1,0 +1,98 @@
+1. Open your SQL editor and run a query to select all columns from a table named restaurants using SELECT * FROM restaurants;.
+
+
+mysql> create table resturants (name varchar(20), rating decimal(2,1));
+ERROR 1046 (3D000): No database selected
+mysql> use student;
+Database changed
+mysql> create table resturants (name varchar(20), rating decimal(2,1));
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> select * from resturants;
+Empty set (0.03 sec)
+
+mysql> insert into resturants (name, rating) values ("Lapinos", 5.5),("martinoz",4.5),("dominoz",4.3);
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from resturants;
++----------+--------+
+| name     | rating |
++----------+--------+
+| Lapinos  |    5.5 |
+| martinoz |    4.5 |
+| dominoz  |    4.3 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+
+2.  Write an SQL query to display only the name and rating columns from the table zomato_reviews.
+
+
+mysql> create table zomato_reviews (
+    ->        name varchar(20),
+    ->        rating decimal(3,1)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into zomato_reviews (name,rating) values ("piyu",5.5),("shalu",4.5),("prit",3.4),("dev",3.3);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select name , rating from zomato_reviews;
++-------+--------+
+| name  | rating |
++-------+--------+
+| piyu  |    5.5 |
+| shalu |    4.5 |
+| prit  |    3.4 |
+| dev   |    3.3 |
++-------+--------+
+4 rows in set (0.00 sec)
+
+
+3. Write an SQL query to select the movie_name and release_year columns from a table called movies, but rename    movie_name as 'Title' and release_year as 'Year Released' in the output using the AS keyword.
+
+
+mysql> create table movies (movie_name varchar(20),release_year int);
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> insert into movies (movie_name,release_year) values ("drishayam",2026),("2 states",2020),("spiderman",2023),("mirzapur",2026);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select movie_name as title,release_year as 'year Realesed' from movies;
++-----------+---------------+
+| title     | year Realesed |
++-----------+---------------+
+| drishayam |          2026 |
+| 2 states  |          2020 |
+| spiderman |          2023 |
+| mirzapur  |          2026 |
++-----------+---------------+
+4 rows in set (0.00 sec)
+
+
+
+4. In a table called products, write an SQL query that selects all columns and add a comment in your SQL code    explaining what the query does.<br><br><em><strong>Hint:</strong> Use -- to write a single-line comment    above your query.</em>
+
+
+mysql> create table products (product_name varchar(20),price decimal(10,2));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into products (product_name,price) values ("mobile",23000),("laptop",64000),("mouse",500),("earbuds",2000);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from products;
++--------------+----------+
+| product_name | price    |
++--------------+----------+
+| mobile       | 23000.00 |
+| laptop       | 64000.00 |
+| mouse        |   500.00 |
+| earbuds      |  2000.00 |
++--------------+----------+
+4 rows in set (0.00 sec)
+
+mysql>
