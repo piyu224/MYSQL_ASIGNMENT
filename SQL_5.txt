@@ -1,0 +1,85 @@
+Q_1:
+mysql> CREATE TABLE orders (order_id INT,payment_method VARCHAR(20));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO orders VALUES(1, 'UPI'),(2, 'Cash'),(3, 'Card'),(4, 'UPI'),(5, 'Card'),(6, 'Cash');
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> SELECT DISTINCT payment_method FROM orders;
++----------------+
+| payment_method |
++----------------+
+| UPI            |
+| Cash           |
+| Card           |
++----------------+
+3 rows in set (0.01 sec)
+
+Q_2:
+
+mysql> SELECT DISTINCT city FROM users ORDER BY city ASC;
++-----------+
+| city      |
++-----------+
+| Ahmedabad |
+| Mumbai    |
+| Surat     |
+| Vadodara  |
++-----------+
+4 rows in set (0.00 sec)
+
+Q_3:
+
+
+mysql> CREATE TABLE bookings (booking_id INT,movie_name VARCHAR(20),booking_date DATE);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO bookings VALUES(1, 'Avatar', '2026-10-20'),(2, 'Avengers', '2026-10-25'),(3, 'Titanic', '2026-10-22'),(4, 'KGF', '2026-10-27'),(5, 'Pushpa', '2026-10-24'),(6, 'Dangal', '2026-10-26');
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM bookings ORDER BY booking_date DESC LIMIT 5;
++------------+------------+--------------+
+| booking_id | movie_name | booking_date |
++------------+------------+--------------+
+|          4 | KGF        | 2026-10-27   |
+|          6 | Dangal     | 2026-10-26   |
+|          2 | Avengers   | 2026-10-25   |
+|          5 | Pushpa     | 2026-10-24   |
+|          3 | Titanic    | 2026-10-22   |
++------------+------------+--------------+
+5 rows in set (0.00 sec)
+
+Q_4:
+
+mysql> SELECT name, sold_count FROM products ORDER BY sold_count DESC LIMIT 10;
+ERROR 1054 (42S22): Unknown column 'sold_count' in 'field list'
+mysql> DESC products;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | int         | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| price    | int         | YES  |     | NULL    |       |
+| category | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> ALTER TABLE products ADD sold_count INT;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT name, sold_count FROM products ORDER BY sold_count DESC LIMIT 10;
++--------+------------+
+| name   | sold_count |
++--------+------------+
+| Laptop |       NULL |
+| Mouse  |       NULL |
+| Chair  |       NULL |
+| Pen    |       NULL |
+| Mobile |       NULL |
++--------+------------+
+5 rows in set (0.00 sec)
+
+mysql>
