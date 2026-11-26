@@ -1,0 +1,105 @@
+mysql> show tables;
++-------------------+
+| Tables_in_student |
++-------------------+
+| emp               |
+| employee          |
+| learner           |
+| movies            |
+| piyu              |
+| pragati           |
+| products          |
+| project           |
+| restaurants       |
+| resturants        |
+| users             |
+| xyz               |
+| zomato_reviews    |
++-------------------+
+13 rows in set (0.14 sec)
+
+
+mysql> SELECT name FROM Restaurants;
++-----------+
+| name      |
++-----------+
+| Dominos   |
+| Pizza Hut |
+| TGB       |
+| Honest    |
+| La Pinoz  |
++-----------+
+5 rows in set (0.00 sec)
+
+Q_1:
+
+mysql> SELECT *FROM Restaurants WHERE name LIKE '%TGB';
++----+------+--------+-----------+
+| id | name | rating | city      |
++----+------+--------+-----------+
+|  3 | TGB  |    4.7 | Ahmedabad |
++----+------+--------+-----------+
+1 row in set (0.00 sec)
+
+
+Q_2:
+
+mysql> SELECT *FROM Products WHERE price BETWEEN 500 AND 1500;
++------+-------+-------+-----------+
+| id   | name  | price | category  |
++------+-------+-------+-----------+
+|    3 | Chair |  1500 | Furniture |
++------+-------+-------+-----------+
+1 row in set (0.02 sec)
+
+
+Q_3:
+
+mysql> SELECT *FROM Users WHERE city IN ('Ahmedabad', 'Surat', 'Vadodara');
++------+-------+-----------+-----------+
+| id   | name  | city      | followers |
++------+-------+-----------+-----------+
+|    1 | Rahul | Surat     |      1500 |
+|    2 | Priya | Ahmedabad |      2000 |
+|    4 | Neha  | Vadodara  |      2500 |
+|    5 | Riya  | Ahmedabad |      1500 |
++------+-------+-----------+-----------+
+4 rows in set (0.02 sec)
+
+
+Q_4:
+
+
+mysql> CREATE TABLE Songs (song_name VARCHAR(20),artist_name VARCHAR(20));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> INSERT INTO Songs (song_name, artist_name)VALUES('Shape of You', 'Ed Sheeran'),('Perfect', 'Ed Sheeran'),('Believer', 'Imagine Dragons'),('Hymn for the Weekend', 'Coldplay'),('Faded', 'Alan Walker'),('Senorita', 'Shawn Mendes');
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM Songs WHERE artist_name LIKE '%ar%';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM Songs;
++----------------------+-----------------+
+| song_name            | artist_name     |
++----------------------+-----------------+
+| Shape of You         | Ed Sheeran      |
+| Perfect              | Ed Sheeran      |
+| Believer             | Imagine Dragons |
+| Hymn for the Weekend | Coldplay        |
+| Faded                | Alan Walker     |
+| Senorita             | Shawn Mendes    |
++----------------------+-----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT *FROM Songs WHERE artist_name LIKE 'ed sheeran';
++--------------+-------------+
+| song_name    | artist_name |
++--------------+-------------+
+| Shape of You | Ed Sheeran  |
+| Perfect      | Ed Sheeran  |
++--------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql>
