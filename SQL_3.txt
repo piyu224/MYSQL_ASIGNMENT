@@ -1,0 +1,124 @@
+SESION_3:
+
+mysql> use student;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_student |
++-------------------+
+| emp               |
+| learner           |
+| movies            |
+| piyu              |
+| pragati           |
+| products          |
+| project           |
+| restaurants       |
+| resturants        |
+| xyz               |
+| zomato_reviews    |
++-------------------+
+11 rows in set (0.10 sec)
+
+Q_1
+
+mysql> SELECT * FROM restaurants WHERE rating >= 4.5;
++----+---------+--------+-----------+
+| id | name    | rating | city      |
++----+---------+--------+-----------+
+|  1 | Dominos |    4.5 | Ahmedabad |
+|  3 | TGB     |    4.7 | Ahmedabad |
+|  4 | Honest  |    4.6 | Vadodara  |
++----+---------+--------+-----------+
+3 rows in set (0.04 sec)
+
+
+mysql> desc movies;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| id     | int          | NO   | PRI | NULL    |       |
+| name   | varchar(20)  | YES  |     | NULL    |       |
+| rating | decimal(2,1) | YES  |     | NULL    |       |
+| city   | varchar(20)  | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+4 rows in set (0.05 sec)
+
+
+Q_2: 
+
+mysql> DROP TABLE movies;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> CREATE TABLE movies (id INT,title VARCHAR(20),release_year INT, genre VARCHAR(20));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> INSERT INTO movies VALUES(1, 'Movie A', 2021, 'Action'),(2, 'Movie B', 2019, 'Action'),(3, 'Movie C', 2023, 'Comedy'),(4, 'Movie D', 2022, 'Action'),(5, 'Movie E', 2020, 'Action');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM movies;
++------+---------+--------------+--------+
+| id   | title   | release_year | genre  |
++------+---------+--------------+--------+
+|    1 | Movie A |         2021 | Action |
+|    2 | Movie B |         2019 | Action |
+|    3 | Movie C |         2023 | Comedy |
+|    4 | Movie D |         2022 | Action |
+|    5 | Movie E |         2020 | Action |
++------+---------+--------------+--------+
+5 rows in set (0.00 sec)
+
+
+mysql> SELECT *FROM movies WHERE release_year > 2020 AND genre = 'Action';
++------+---------+--------------+--------+
+| id   | title   | release_year | genre  |
++------+---------+--------------+--------+
+|    1 | Movie A |         2021 | Action |
+|    4 | Movie D |         2022 | Action |
++------+---------+--------------+--------+
+2 rows in set (0.00 sec)
+
+
+Q_3:
+
+mysql> drop table products;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE TABLE products (id INT,name VARCHAR(20),price INT,category VARCHAR(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO products VALUES(1, 'Laptop', 50000, 'Electronics'),(2, 'Mouse', 400, 'Electronics'),(3, 'Chair', 1500, 'Furniture'),(4, 'Pen', 50, 'Stationery'),(5, 'Mobile', 20000, 'Electronics');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM products WHERE category != 'Electronics'OR price < 500;
++------+-------+-------+-------------+
+| id   | name  | price | category    |
++------+-------+-------+-------------+
+|    2 | Mouse |   400 | Electronics |
+|    3 | Chair |  1500 | Furniture   |
+|    4 | Pen   |    50 | Stationery  |
++------+-------+-------+-------------+
+3 rows in set (0.00 sec)
+'
+
+Q_4:
+
+mysql> CREATE TABLE users (id INT,name VARCHAR(20),city VARCHAR(20),followers INT);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO users VALUES(1, 'Rahul', 'Surat', 1500),(2, 'Priya', 'Ahmedabad', 2000),(3, 'Amit', 'Mumbai', 800),(4, 'Neha', 'Vadodara', 2500),(5, 'Riya', 'Ahmedabad', 1500);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT *FROM users WHERE NOT city = 'Ahmedabad'AND followers > 1000;
++------+-------+----------+-----------+
+| id   | name  | city     | followers |
++------+-------+----------+-----------+
+|    1 | Rahul | Surat    |      1500 |
+|    4 | Neha  | Vadodara |      2500 |
++------+-------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
